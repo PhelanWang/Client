@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="../../js/angular.min.js"></script>
+    <title>Title</title>
+</head>
+<body ng-app="eventModule">
+
+    <div id="parent" ng-controller="ParentController">
+        <div>
+            父作用域
+            <button ng-click="postEvent()">BroadCast</button>
+        </div>
+
+
+        <div id="child1" ng-controller="Child1Controller">
+            子作用域1
+        </div>
+
+        <div id="child2" ng-controller="Child2Controller">
+            子作用域2
+        </div>
+    </div>
+
+
+    <script>
+        var app = angular.module("eventModule", []);
+
+        app.controller("ParentController", function ($scope) {
+
+            //发出事件
+            $scope.postEvent = function () {
+                $scope.$broadcast("infoEvent", {name:'Jane', age:32});
+            }
+
+
+        });
+
+        app.controller("Child1Controller", function ($scope) {
+            // 注册事件监听
+            $scope.$on("infoEvent", function (event, data) {
+                console.log("receive child1 scope event. . .");
+                console.log(data);
+                console.log(event);
+            });
+        });
+
+        app.controller("Child2Controller", function ($scope) {
+            // 注册事件监听
+            $scope.$on("infoEvent", function (event, data) {
+                console.log("receive child2 scope event. . .");
+                console.log(data);
+            });
+        });
+    </script>
+</body>
+</html>

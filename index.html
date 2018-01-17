@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="homeModule">
+<head>
+    <meta charset="UTF-8">
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-route.js"></script>
+    <script src="js/angular-resource.js"></script>
+    <script src="homeModule.js"></script>
+    <title>首页</title>
+</head>
+<body ng-controller="IndexController">
+    <div align="center" style="margin-top: 10%">
+        <div ng-if="!username">
+            <table border="1px">
+                <tr>
+                    <td><a href="#/login">登录</a></td>
+                    <td><a href="#/register">注册</a></td>
+                </tr>
+            </table>
+        </div>
+        <div ng-if="username">
+            <table>
+                <tr>
+                    <td>Welcome,</td>
+                    <td><span>{{username}}</span></td>
+                    <td><a href="#" ng-click="logout()">注销</a></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><a href="#/categorys">categorys</a></td>
+                </tr>
+            </table>
+        </div>
+        <div ng-view></div>
+    </div>
+</body>
+</html>

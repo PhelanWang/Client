@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="../../js/angular.min.js"></script>
+    <title>Title</title>
+</head>
+<body ng-app="watchModule">
+    <input ng-model="num" type="number" />
+    <div>change count: {{ count }}</div>
+    <script>
+        angular.module("watchModule", [])
+            .run(['$rootScope', function ($rootScope) {
+                $rootScope.count = 0;
+                $rootScope.num = 0;
+                $rootScope.$watch('num', function (newValue, oldValue) {
+                    // 解除绑定
+                    if (newValue == 2){
+                        unbindWatcher();
+                    }
+                    $rootScope.count++;
+                })
+            }]);
+    </script>
+</body>
+</html>

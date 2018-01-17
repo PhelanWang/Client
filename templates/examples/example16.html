@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="../../js/angular.min.js"></script>
+    <title>Title</title>
+</head>
+<body ng-app="app">
+    <div ng-controller="MainController">
+        <button ng-click="set()">修改</button>
+    </div>
+    <div ng-controller="SubController">
+        <button ng-click="get()">点我</button>
+    </div>
+
+    <script>
+        var app = angular.module('app', []);
+        app.service('GetToken', function () {
+            this.token = 'abc';
+            this.get = function () {
+                return this.token;
+            }
+            this.set = function (token) {
+                this.token = token;
+            }
+        });
+
+        app.controller("MainController", function ($scope, GetToken) {
+            $scope.set = function () {
+                GetToken.set('abccd');
+            }
+        });
+        app.controller("SubController", function ($scope, GetToken) {
+            $scope.get = function () {
+                console.log(GetToken.get());
+            }
+        });
+    </script>
+</body>
+</html>
+
+
+
+

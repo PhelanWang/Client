@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="../../js/angular.min.js"></script>
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        function Person(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+
+        function Student(name, age, love) {
+            Person.apply(this, [name, age]);
+//            Person.call(this, name, age);
+            this.love = love;
+        }
+
+        var student = new Student('jane', 23, 'pingpong');
+        console.log(student.name);
+        console.log(student.age);
+        console.log(student.love);
+    </script>
+</body>
+</html>

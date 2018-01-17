@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="../../js/angular.min.js"></script>
+    <title>Title</title>
+</head>
+<body ng-app="eventModule">
+
+    <div id="parent" ng-controller="ParentController">
+        <div id="child" ng-controller="ChildController">
+            <button ng-click="postEvent()">Emit</button>
+        </div>
+    </div>
+
+
+    <script>
+        var app = angular.module("eventModule", []);
+
+        app.controller("ParentController", function ($scope) {
+            // 注册事件监听
+            $scope.$on("infoEvent", function (event, data) {
+                console.log("receive child scope event. . .");
+                console.log(data);
+                console.log(event);
+            });
+        });
+
+        app.controller("ChildController", function ($scope) {
+            //发出事件
+            $scope.postEvent = function () {
+                $scope.$emit("infoEvent", {name:'Jane', age:32});
+            }
+        });
+    </script>
+</body>
+</html>

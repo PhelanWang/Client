@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="../../js/angular.min.js"></script>
+    <title>Title</title>
+</head>
+<body ng-app="myApp">
+    <div ng-controller="CalcController">
+        <input type="number" name="number" ng-model="number" />
+        <div>{{ number }}</div>
+    </div>
+
+    <div ng-controller="LoginController">
+        <input type="text" name="username" ng-model="username" />
+        <div>{{ username }}</div>
+    </div>
+
+
+    <script>
+        var myApp = angular.module("myApp", []);
+        myApp.controller("CalcController", function ($scope, $log) {
+            $scope.number = 10;
+            $log.info("calc number: " + $scope.number);
+            $log.info("calc username: " + $scope.username);
+
+        });
+        myApp.controller("LoginController", function ($scope, $log) {
+            $scope.username = "amdin";
+            $log.info("calc number: " + $scope.number);
+            $log.info("calc username: " + $scope.username);
+
+        });
+    </script>
+</body>
+</html>

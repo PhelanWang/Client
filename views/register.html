@@ -1,0 +1,22 @@
+<div ng-init="username='';password='';email=''">
+    <form>
+        <table border="1px">
+            <tr>
+                <td><label for="username">用户名：</label></td>
+                <td><input type="text" id="username" name="username" ng-model="username"/></td>
+            </tr>
+            <tr>
+                <td><label for="password">密码：</label>
+                <td><input type="password" id="password" name="password" ng-model="password"/></td>
+            </tr>
+            <tr>
+                <td><label for="email">邮箱：</label></td>
+                <td><input type="email" id="email" name="email" ng-model="email"></td>
+            </tr>
+            <tr>
+                <td><button type="submit" ng-click="submit()">注册</button></td>
+                <td><button type="reset">重置</button></td>
+            </tr>
+        </table>
+    </form>
+</div>

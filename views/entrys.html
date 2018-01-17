@@ -1,0 +1,22 @@
+<div>
+    <table border="1px">
+        <thead>
+            <td>姓名</td>
+            <td>电话号码</td>
+            <td>添加时间</td>
+            <td colspan="2">操作</td>
+        </thead>
+        <tbody>
+            <tr ng-repeat="result in results">
+                <td>{{ result.name }}</td>
+                <td>{{ result.phone_number }}</td>
+                <td>{{ result.date_added|date:'yyyy-MM-dd' }}</td>
+                <td><a href="#/edit_entry/{{result.id}}">修改</a></td>
+                <td><a href="#" ng-click="delete_entry(result.id)">删除</a></td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr><td colspan="5"><a href="#/add_entry/{{category_id}}">添加联系人</a></td></tr>
+        </tfoot>
+    </table>
+</div>

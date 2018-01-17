@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="../../js/angular.min.js"></script>
+    <title>Title</title>
+</head>
+<body ng-app="msgModule">
+    <div ng-controller="MsgController">
+        <div>
+            <button ng-click="scheduleTase()">3秒后回显信息</button>
+        </div>
+        <div>{{ message }}</div>
+    </div>
+    <script>
+        angular.module("msgModule", [])
+            .controller("MsgController", function ($scope) {
+                $scope.scheduleTase = function () {
+                    setTimeout(function () {
+//                        $scope.$apply(function () {
+                            $scope.message = "信息内容";
+                            console.log('message = ' + $scope.message);
+//                        });
+                    }, 3000);
+                }
+            })
+    </script>
+</body>
+</html>

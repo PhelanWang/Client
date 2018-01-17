@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="../../js/angular.min.js"></script>
+    <title>Title</title>
+</head>
+<body ng-app="myApp">
+    <div ng-controller="LoginController">
+        <form>
+            <label for="username">用户名：</label><input type="text" id="username" name="username" ng-model="username" /><br/>
+            <label for="password">密码：</label><input type="password" id="password" name="password" ng-model="password" /><br/>
+            <label for="email">邮箱：</label><input type="email" id="email" name="email" ng-model="email"><br/>
+            <button type="submit" ng-click="login()">登录</button>
+            <button type="reset">重置</button>
+            <div>{{ username }}</div>
+            <div>{{ password }}</div>
+            <div>{{ email }}</div>
+        </form>
+    </div>
+    <script>
+        var myApp = angular.module("myApp", []);
+        myApp.controller("LoginController", function ($scope, $log) {
+            $scope.login = function () {
+                if($scope.username=="admin" && $scope.password=="admin"){
+                    alert("success");
+                }else{
+                    alert("false");
+                }
+            }
+        });
+    </script>
+</body>
+</html>

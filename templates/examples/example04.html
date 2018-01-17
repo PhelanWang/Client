@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="../../js/angular.min.js"></script>
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function Animal() {
+        this.eat = function () {
+            console.log('eat. . .');
+        }
+    }
+
+    function Cat(age) {
+        this.age = age;
+    }
+
+    Cat.prototype = new Animal();
+    var cat = new Cat(10);
+    console.log('cat.age=' + cat.age);
+    cat.eat();
+</script>
+</body>
+</html>
