@@ -28,12 +28,15 @@ function ($routeProvider) {
     }).when('/add_entry/:category_id', {
             templateUrl: 'views/entry_add.html',
             controller: 'EntryAddController'
-    })
+    }).when('/middle', {
+            templateUrl: 'views/categorys.html',
+            controller: 'CategorysController'
+    });
 
 }]);
 
 // 获取登录后的Token和用户名的服务
-homeModule.service("TokenService", function ($window, $rootScope) {
+homeModule.service("TokenService", function ($window) {
     // 设置和获得token的方法
     this.getToken = function () {
         return $window.sessionStorage.token;
@@ -98,7 +101,6 @@ homeModule.controller("LoginController", function ($scope, $http, $location, Tok
             $scope.username = TokenService.getUsername();
 
             $scope.$emit("login_success", {username:$scope.username});
-
             $location.path('/categorys');
         }).error(function (data, status, headers, config) {
             console.log("error");
@@ -173,7 +175,9 @@ homeModule.controller("CategorysController", function ($scope, $location, $http,
                     Authorization: 'JWT ' + TokenService.getToken()}
         }).success(function (data, status, headers, config) {
             console.log(status);
-            location.reload();
+            console.log('1');
+            $location.path('/middle');
+            console.log('2');
         }).error(function (data, status, headers, config) {
             console.log(status + " " + data);
         });
@@ -221,7 +225,6 @@ homeModule.controller("CategoryEditController", function ($scope, $http, $locati
 
 // 添加Category的控制其
 homeModule.controller("CategoryAddController", function ($scope, $http, $location, TokenService) {
-    $scope.text = 'aa';
     $scope.category_add_submit = function () {
         console.log("add submit: " + $scope.text);
         var formdata = new FormData();
@@ -230,7 +233,6 @@ homeModule.controller("CategoryAddController", function ($scope, $http, $locatio
             method: 'POST',
             url: 'http://127.0.0.1:8000/api/categorys/',
             data: formdata,
-            // Authorization: 'Bearer ' + $window.sessionStorage.token,
             headers: {'Content-Type': undefined,
                 Authorization: 'JWT ' + TokenService.getToken()
             }

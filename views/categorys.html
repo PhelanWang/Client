@@ -1,20 +1,50 @@
-<div>
-    <table border="1px">
-        <thead>
-            <td>分组</td>
-            <td>添加时间</td>
-            <td colspan="2">操作</td>
-        </thead>
-        <tbody>
-            <tr ng-repeat="result in results">
-                <td><a href="#/entrys/{{result.id}}">{{ result.text }}</a></td>
-                <td>{{ result.date_added|date:'yyyy-MM-dd' }}</td>
-                <td><a href="#/edit_category/{{result.id}}">修改</a></td>
-                <td><a href="" ng-click="delete_category(result.id)">删除</a></td>
-            </tr>
-        </tbody>
-        <tfoot>
-            <tr><td colspan="4"><a href="#/add_category">添加新的分组</a></td></tr>
-        </tfoot>
-    </table>
+<!--<div>-->
+    <!--<table border="1px">-->
+        <!--<thead>-->
+            <!--<td>分组</td>-->
+            <!--<td>添加时间</td>-->
+            <!--<td colspan="2">操作</td>-->
+        <!--</thead>-->
+        <!--<tbody>-->
+            <!--<tr ng-repeat="result in results">-->
+                <!--<td><a href="#/entrys/{{result.id}}">{{ result.text }}</a></td>-->
+                <!--<td>{{ result.date_added|date:'yyyy-MM-dd' }}</td>-->
+                <!--<td><a href="#/edit_category/{{result.id}}">修改</a></td>-->
+                <!--<td><a href="" ng-click="delete_category(result.id)">删除</a></td>-->
+            <!--</tr>-->
+        <!--</tbody>-->
+        <!--<tfoot>-->
+            <!--<tr><td colspan="4"><a href="#/add_category">添加新的分组</a></td></tr>-->
+        <!--</tfoot>-->
+    <!--</table>-->
+<!--</div>-->
+
+<div class="container">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<table class="table table-hover table-striped">
+				<thead>
+					<tr>
+						<th>分组</th>
+						<th>添加时间</th>
+						<th>修改</th>
+						<th>删除</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="result in results">
+						<td><a href="#/entrys/{{result.id}}">{{ result.text }}</a></td>
+						<td>{{ result.date_added|date:'yyyy-MM-dd' }}</td>
+						<td><a href="#/edit_category/{{result.id}}">修改</a></td>
+						<td><a href="#" ng-click="delete_category(result.id)">删除</a></td>
+					</tr>
+				</tbody>
+                <tfoot>
+                <tr class="success">
+                    <td colspan="4"><a href="#/add_category">添加新的分组</a></td>
+                </tr>
+                </tfoot>
+			</table>
+		</div>
+	</div>
 </div>
